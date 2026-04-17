@@ -17,8 +17,6 @@ export const login = async (req, res) => {
       throw new Error(`${email} is not a valid email`);
     }
 
-    // Include password if you used select: false in schema
-    // const user = await User.findOne({ email }).select("+password");
     const user = staffs.find((staff) => staff.email === email);
 
     if (!user) {
@@ -29,7 +27,6 @@ export const login = async (req, res) => {
     }
 
     // Compare passwords
-    // const isPasswordValid = await bcryptjs.compare(password, user.password);
     const isPasswordValid = password === user.password ? true : false;
 
     if (!isPasswordValid) {
